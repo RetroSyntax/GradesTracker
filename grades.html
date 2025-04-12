@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Grades Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="Favicon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #0e0f12;
+      color: #f1f1f1;
+    }
+
+    .sidebar {
+      width: 260px;
+      background-color: #1c1e23;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #2a2d34;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #ffffff;
+    }
+
+    .class-item {
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      background-color: #2a2d34;
+      border-radius: 8px;
+      color: #f1f1f1;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .class-item:hover {
+      background-color: #3a7bfd;
+      color: white;
+    }
+
+    .main {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .header {
+      margin-bottom: 20px;
+    }
+
+    .grade-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .grade-card {
+      background-color: #1c1e23;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border: 1px solid #2a2d34;
+    }
+
+    .grade-card h4 {
+      margin-bottom: 10px;
+      color: #f1f1f1;
+    }
+
+    .grade-card p {
+      font-size: 18px;
+      color: #3a7bfd;
+    }
+
+    .summary {
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .summary-card {
+      flex: 1;
+      min-width: 220px;
+      background-color: #1c1e23;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #2a2d34;
+    }
+
+    .summary-card h4 {
+      margin-bottom: 8px;
+      color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Your Classes</h2>
+    <div class="class-item" onclick="showGrades('home')"><i class="fas fa-home"></i> Home</div>
+    <div class="class-item" onclick="showGrades('Math')"><i class="fas fa-square-root-alt"></i> Math</div>
+    <div class="class-item" onclick="showGrades('Science')"><i class="fas fa-flask"></i> Science</div>
+    <div class="class-item" onclick="showGrades('Social')"><i class="fas fa-globe"></i> Social</div>
+    <div class="class-item" onclick="showGrades('French')"><i class="fas fa-language"></i> French</div>
+    <div class="class-item" onclick="showGrades('English')"><i class="fas fa-book"></i> English</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1 id="class-title">Select a Class</h1>
+    </div>
+    <div id="grade-container" class="grade-container"></div>
+  </div>
+
+  <script>
+    const grades = {
+      Math: [
+        { name: 'Test: %/Decimals/Fractions', grade: '93%' },
+        { name: 'Test: Fractions', grade: '98%' },
+        { name: 'Test: Algebra', grade: '88%' },
+        { name: 'Test: Decimals', grade: '87%' },
+        { name: 'Test: Integers', grade: '94%' }
+      ],
+      Science: [
+        { name: 'Lab Report', grade: '89%' },
+        { name: 'Quiz 1', grade: '91%' }
+      ],
+      Social: [
+        { name: 'Devoir Chronologique', grade: '100%' },
+        { name: 'Quiz: Chapitre 5', grade: '100%' },
+        { name: 'Test: Chapitre 4', grade: '98%' },
+        { name: 'Mon Role', grade: '76%' },
+        { name: 'Quiz: Chapitre 4', grade: '97%' },
+        { name: 'Team Presentation', grade: '93%' },
+        { name: 'Test: Chapitre 3', grade: '72%' },
+        { name: 'Samuel de Champlain', grade: '88%' },
+        { name: 'Quiz 1: Chapitre 2', grade: '85%' },
+        { name: 'Test: Chapitre 1', grade: '86%' },
+        { name: 'Quiz 2: Chapitre 1', grade: '100%' },
+        { name: 'Quiz 1: Chapitre 1', grade: '100%' }
+      ],
+      French: [
+        { name: 'French', grade: '100%' }
+      ],
+      English: [
+        { name: 'Book Report', grade: '93%' },
+        { name: 'Presentation', grade: '88%' }
+      ]
+    };
+
+    function getLevel(percent) {
+      if (percent >= 90) return 4;
+      if (percent >= 80) return 3;
+      if (percent >= 60) return 2;
+      return 1;
+    }
+
+    function calculateAverage(subjectGrades) {
+      if (!subjectGrades.length) return 0;
+      const total = subjectGrades.reduce((sum, entry) => sum + parseInt(entry.grade.replace('%', '').replace('Score', ''), 10), 0);
+      return Math.round(total / subjectGrades.length);
+    }
+
+    function showGrades(subject) {
+      const title = document.getElementById('class-title');
+      const container = document.getElementById('grade-container');
+      container.innerHTML = '';
+
+      if (subject === 'home') {
+        title.textContent = 'Dashboard Overview';
+
+        const summary = document.createElement('div');
+        summary.className = 'summary';
+
+        let allGrades = [];
+        for (let subject in grades) {
+          const subjectAverage = calculateAverage(grades[subject]);
+          const summaryCard = document.createElement('div');
+          summaryCard.className = 'summary-card';
+          summaryCard.innerHTML = `<h4>${subject} Average</h4><p>${subjectAverage}% / ${getLevel(subjectAverage)}</p>`;
+          summary.appendChild(summaryCard);
+          allGrades = allGrades.concat(grades[subject]);
+        }
+
+        const totalAverage = calculateAverage(allGrades);
+        const totalCard = document.createElement('div');
+        totalCard.className = 'summary-card';
+        totalCard.innerHTML = `<h4>All Classes Average</h4><p>${totalAverage}% / ${getLevel(totalAverage)}</p>`;
+        summary.appendChild(totalCard);
+
+        container.appendChild(summary);
+        return;
+      }
+
+      title.textContent = subject + ' Grades';
+      grades[subject].forEach(entry => {
+        const percent = parseInt(entry.grade.replace('%', '').replace('Score', ''), 10);
+        const level = getLevel(percent);
+        const card = document.createElement('div');
+        card.className = 'grade-card';
+        card.innerHTML = `<h4>${entry.name}</h4><p>${entry.grade} / ${level}</p>`;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
