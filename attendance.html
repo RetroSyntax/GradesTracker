@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance - Schooling Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/Images/Favicon.png">
+  <link rel="stylesheet" href="/css/attendance.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="helpme">
+      <div class="logo">Schooling</div>
+      <ul>
+        <a href="index.html" class="nav-link"><li>Dashboard</li></a>
+        <a href="grades.html" class="nav-link"><li>Grades</li></a>
+        <a href="attendance.html" class="nav-link active"><li>Attendance</li></a>
+        <a href="reportcard.html" class="nav-link"><li>Report Card</li></a>
+        <a href="calendar.html" class="nav-link"><li>Calendar</li></a>
+      </ul>
+    </aside>
+
+    <main>
+      <div class="topbar">
+        <input type="text" placeholder="Search Here...">
+        <div class="user">
+          <div>
+            <div>Tristan Stokes</div>
+            <small>Creator</small>
+          </div>
+          <img src="/Images/Profile.png" alt="User avatar">
+        </div>
+      </div>
+
+      <div class="grade-section">
+        <h2>Your Absences</h2>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+          <div class="subject-header">
+            <span>January</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="grade-list">
+            <div class="grade-item"><span>Total Absences</span><span>2</span></div>
+          </div>
+        </div>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+          <div class="subject-header">
+            <span>February</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="grade-list">
+            <div class="grade-item"><span>Total Absences</span><span>1</span></div>
+          </div>
+        </div>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+          <div class="subject-header">
+            <span>March</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="grade-list">
+            <div class="grade-item"><span>Total Absences</span><span>3</span></div>
+          </div>
+        </div>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+          <div class="subject-header">
+            <span>April</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="grade-list">
+            <div class="grade-item"><span>Total Absences</span><span>0</span></div>
+          </div>
+        </div>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+          <div class="subject-header">
+            <span>May</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="grade-list">
+            <div class="grade-item"><span>Total Absences</span><span>1</span></div>
+          </div>
+        </div>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+            <div class="subject-header">
+              <span>June</span>
+              <span class="arrow">▶</span>
+            </div>
+            <div class="grade-list">
+              <div class="grade-item"><span>Total Absences</span><span>1</span></div>
+            </div>
+          </div>
+      </div>
+    </main>
+  </div>
+  <script src="/js/attendance.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report Card - Schooling Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/reportcard.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">Schooling</div>
+      <ul>
+        <a href="index.html" class="nav-link"><li>Dashboard</li></a>
+        <a href="grades.html" class="nav-link"><li>Grades</li></a>
+        <a href="attendance.html" class="nav-link"><li>Attendance</li></a>
+        <a href="reportcard.html" class="nav-link active"><li>Report Card</li></a>
+        <a href="calendar.html" class="nav-link"><li>Calendar</li></a>
+      </ul>
+    </aside>
+
+    <main>
+      <div class="topbar">
+        <input type="text" placeholder="Search Here..." />
+        <div class="user">
+          <div>
+            <div>Tristan Stokes</div>
+            <small>Creator</small>
+          </div>
+          <img src="/Images/Profile.png" alt="User avatar" />
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h2>Semester 1 / 2024</h2>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+          <div class="subject-header">
+            <span>Math</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="grade-list">
+            <div class="grade-item"><span>Knowledge</span><span>87%</span></div>
+            <div class="grade-item"><span>Thinking</span><span>82%</span></div>
+            <div class="grade-item"><span>Communication</span><span>85%</span></div>
+            <div class="grade-item"><span>Application</span><span>88%</span></div>
+          </div>
+        </div>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+          <div class="subject-header">
+            <span>English</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="grade-list">
+            <div class="grade-item"><span>Reading</span><span>90%</span></div>
+            <div class="grade-item"><span>Writing</span><span>85%</span></div>
+            <div class="grade-item"><span>Oral Communication</span><span>88%</span></div>
+          </div>
+        </div>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+          <div class="subject-header">
+            <span>Science</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="grade-list">
+            <div class="grade-item"><span>Knowledge</span><span>80%</span></div>
+            <div class="grade-item"><span>Investigation</span><span>78%</span></div>
+            <div class="grade-item"><span>Communication</span><span>82%</span></div>
+            <div class="grade-item"><span>Application</span><span>79%</span></div>
+          </div>
+        </div>
+
+        <div class="subject-card" onclick="toggleGradeList(this)">
+          <div class="subject-header">
+            <span>History</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="grade-list">
+            <div class="grade-item"><span>Knowledge</span><span>84%</span></div>
+            <div class="grade-item"><span>Thinking</span><span>81%</span></div>
+            <div class="grade-item"><span>Communication</span><span>83%</span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/reportcard.js"></script>
+</body>
+</html>
