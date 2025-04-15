@@ -28,19 +28,24 @@ const currentDate = new Date();
     
     calendarGridElement.innerHTML = calendarHTML;
 
+// Days Left of School Updater
+
 function updateDaysLeft() {
-  const targetDate = new Date("2025-06-26");
+  const targetDate = new Date("2025-06-26T00:00:00");
   const today = new Date();
 
+  // Strip time for clean date difference
   targetDate.setHours(0, 0, 0, 0);
   today.setHours(0, 0, 0, 0);
 
-  const msPerDay = 24 * 60 * 60 * 1000;
-  const diff = Math.max(0, Math.floor((targetDate - today) / msPerDay));
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const daysLeft = Math.max(0, Math.floor((targetDate - today) / msPerDay));
 
-  const daysLeftElement = document.getElementById('days-left');
+  const daysLeftElement = document.getElementById("days-left");
   if (daysLeftElement) {
-    daysLeftElement.textContent = diff;
+    daysLeftElement.textContent = daysLeft;
+  } else {
+    console.error("Couldn't find #days-left element.");
   }
 }
 
