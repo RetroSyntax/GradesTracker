@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
     const errorMessage = document.getElementById('error-message');
+    const rememberMeCheckbox = document.getElementById('rememberMe');
 
-    // Manually add your usernames and passwords here
     const users = {
         'laserbendy': '!2025Flair',
         // Add more users as needed
@@ -17,10 +17,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const enteredPassword = passwordInput.value;
 
         if (users.hasOwnProperty(enteredUsername) && users[enteredUsername] === enteredPassword) {
-            // Successful login - redirect to index.html
-            window.location.href = 'index.html';
+            const now = new Date().getTime();
+            const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+            if (rememberMeCheckbox.checked) {
+                // Keep me signed in: Store login timestamp in localStorage for longer persistence
+                localStorage.setItem('loginTimestamp', now);
+                localStorage.setItem('staySignedIn', 'true');
+                sessionStorage.removeItem('loginTimestamp'); // Clear sessionStorage if used
+            } else {
+                // Session-based login: Store login timestamp in sessionStorage
+                sessionStorage.setItem('loginTimestamp', now);
+                localStorage.removeItem('staySignedIn'); // Ensure staySignedIn is removed
+                localStorage.removeItem('loginTimestamp'); // Clear localStorage timestamp if present
+            }
+
+            window.location.href = 'index.html'; // Redirect to the main page
         } else {
-            // Incorrect username or password
             errorMessage.textContent = 'Incorrect username or password.';
         }
     });
