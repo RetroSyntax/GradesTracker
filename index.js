@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function() {
+
 const currentDate = new Date();
     const monthYearElement = document.getElementById('month-year');
     const calendarGridElement = document.getElementById('calendar-grid');
@@ -50,3 +52,20 @@ function updateDaysLeft() {
 }
 
 updateDaysLeft();
+
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            // Remove login information from localStorage
+            localStorage.removeItem('loginTimestamp');
+            localStorage.removeItem('staySignedIn');
+
+            // Remove login information from sessionStorage
+            sessionStorage.removeItem('loginTimestamp');
+
+            // Redirect to the login page
+            window.location.href = 'login.html';
+        });
+    }
+});
