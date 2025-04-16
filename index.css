@@ -236,5 +236,7 @@ align-items: stretch;
   gap: 1rem;
   margin-left: auto; /* Pushes it to the far right */
 }
-
+.logout-button {
+    align-items: center;
+}
 
