@@ -240,3 +240,7 @@ align-items: stretch;
     align-items: center;
 }
 
+.grades h3 {
+  text-align: center;
+  font-weight: bold;
+}
