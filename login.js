@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (users.hasOwnProperty(enteredUsername) && users[enteredUsername] === enteredPassword) {
             // Successful login - redirect to index.html
-            window.location.href = '/html/index.html';
+            window.location.href = 'index.html';
         } else {
             // Incorrect username or password
             errorMessage.textContent = 'Incorrect username or password.';
