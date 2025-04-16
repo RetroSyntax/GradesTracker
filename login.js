@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorMessage = document.getElementById('error-message');
     const rememberMeCheckbox = document.getElementById('rememberMe');
 
-    const users = {
-        'laserbendy': '!2025Flair',
-        // Add more users as needed
+   const users = {
+        'MyUsername': 'MySecretPassword', // Case-sensitive!
+        'anotherUser': 'anotherPassword',
+        // ... your users
     };
 
     loginForm.addEventListener('submit', function(event) {
