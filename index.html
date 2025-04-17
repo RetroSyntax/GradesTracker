@@ -1,108 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Schooling Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="Favicon.png">
-  <link rel="stylesheet" href="index.css">
-  <script src="authcheck.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schooling Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="Favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <script src="authcheck.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <div class="container">
-    <aside class="helpme">
-      <div class="logo"> Schooling</div>
-      <ul>
-        <a href="index.html" class="nav-link active"><li>Dashboard</li></a>
-        <a href="grades.html" class="nav-link"><li>Grades</li></a>
-        <a href="attendance.html" class="nav-link"><li>Attendance</li></a>
-        <a href="reportcard.html" class="nav-link"><li>Report Card</li></a>
-        <a href="calendar.html" class="nav-link"><li>Calendar</li></a>
-      </ul>      
-    </aside>
+    <div class="container">
+        <aside class="helpme">
+            <div class="logo"> Schooling</div>
+            <ul>
+                <a href="index.html" class="nav-link active"><li>Dashboard</li></a>
+                <a href="grades.html" class="nav-link"><li>Grades</li></a>
+                <a href="attendance.html" class="nav-link"><li>Attendance</li></a>
+                <a href="reportcard.html" class="nav-link"><li>Report Card</li></a>
+                <a href="calendar.html" class="nav-link"><li>Calendar</li></a>
+            </ul>
+        </aside>
 
-    <main>
-      <div class="topbar">
-  <input type="text" placeholder="Search Here...">
+        <main>
+            <div class="topbar">
+                <input type="text" placeholder="Search Here...">
+                <div class="topbar-right">
+                    <button id="logoutBtn" class="logout-button">Logout</button>
+                    <div class="user">
+                        <div>
+                            <div>Tristan Stokes</div>
+                            <small>Creator</small>
+                        </div>
+                        <img src="Profile.png" alt="User avatar">
+                    </div>
+                </div>
+            </div>
 
-  <div class="topbar-right">
-    <button id="logoutBtn" class="logout-button">Logout</button>
-    
-    <div class="user">
-      <div>
-        <div>Tristan Stokes</div>
-        <small>Creator</small>
-      </div>
-      <img src="Profile.png" alt="User avatar">
+            <div class="metrics">
+                <div class="metric">
+                    <h3>4</h3>
+                    <p>Average Grade</p>
+                </div>
+                <div class="metric">
+                    <h3>2</h3>
+                    <p>Lowest Grade</p>
+                </div>
+                <div class="metric">
+                    <h3>356</h3>
+                    <p>Graded assignments</p>
+                </div>
+                <div class="metric">
+                    <h3 id="days-left">0</h3>
+                    <p>Days left</p>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div>
+                    <div class="grades">
+                        <h3>Grades</h3>
+                        <div class="chart-container bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 md:p-6">
+                            <canvas id="gradeChart"></canvas>
+                        </div>
+                        <p id="noDataMessage" class="text-center text-gray-500 dark:text-gray-400 mt-4" style="display:none;">No data available. Please ensure Grades.html is accessible and contains grade information.</p>
+                    </div>
+
+                    <div class="attendance" style="margin-top: 2rem">
+                        <h3>Attendance</h3>
+                        <p>Chart Placeholder: What months I was most absent in</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <h3 id="month-year"></h3>
+                            <span>&lt; &gt;</span>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid">
+                        </div>
+                        <div class="calendar-item green">
+                            <strong>9:30 am</strong> All Grade: Homeroom & Announcement
+                        </div>
+                        <div class="calendar-item yellow">
+                            <strong>10:00 am</strong> Grade 8: Math Review & Practice
+                        </div>
+                        <div class="calendar-item red">
+                            <strong>11:30 am</strong> Grade 7: English Speaking Discussion
+                        </div>
+                        <div class="calendar-item gray">
+                            <strong>12:00 am</strong> Grade 9: Practical Science Topics Show
+                        </div>
+                    </div>
+
+                    <div class="notice-board" style="margin-top: 2rem">
+                        <h3>Notice Board</h3>
+                        <p><strong>Math Competition</strong> by Tristan Stokes (Math Teacher)</p>
+                        <p>Competition - 04/12/24</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-  </div>
-</div>
-
-
-      <div class="metrics">
-        <div class="metric">
-          <h3>4</h3>
-          <p>Average Grade</p>
-        </div>
-        <div class="metric">
-          <h3>2</h3>
-          <p>Lowest Grade</p>
-        </div>
-        <div class="metric">
-          <h3>356</h3>
-          <p>Graded assignments</p>
-        </div>
-        <div class="metric">
-          <h3 id="days-left">0</h3>
-          <p>Days left</p>
-        </div>
-      </div>
-
-      <div class="cards">
-        <div>
-          <div class="grades">
-            <h3>Grades</h3>
-            <p>Chart Placeholder: Different Classes to see which has the highest average grade</p>
-          </div>
-
-          <div class="attendance" style="margin-top: 2rem">
-            <h3>Attendance</h3>
-            <p>Chart Placeholder: What months I was most absent in</p>
-          </div>
-        </div>
-
-        <div>
-          <div class="calendar">
-            <div class="calendar-header">
-              <h3 id="month-year"></h3>
-              <span>&lt; &gt;</span>
-            </div>
-            <div class="calendar-grid" id="calendar-grid">
-            </div>
-            <div class="calendar-item green">
-              <strong>9:30 am</strong> All Grade: Homeroom & Announcement
-            </div>
-            <div class="calendar-item yellow">
-              <strong>10:00 am</strong> Grade 8: Math Review & Practice
-            </div>
-            <div class="calendar-item red">
-              <strong>11:30 am</strong> Grade 7: English Speaking Discussion
-            </div>
-            <div class="calendar-item gray">
-              <strong>12:00 am</strong> Grade 9: Practical Science Topics Show
-            </div>
-          </div>
-
-          <div class="notice-board" style="margin-top: 2rem">
-            <h3>Notice Board</h3>
-            <p><strong>Math Competition</strong> by Tristan Stokes (Math Teacher)</p>
-            <p>Competition - 04/12/24</p>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
- <script src="index.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.js"></script>
 </body>
 </html>
