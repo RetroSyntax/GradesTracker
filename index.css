@@ -183,10 +183,10 @@ align-items: stretch;
 
 .topbar {
   display: flex;
-  justify-content: space-between; /* This will push items to opposite ends */
-  align-items: center; /* Vertically align items in the topbar */
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
-  padding: 0 1rem; /* Add some padding to the left and right of the topbar */
+  padding: 0 1rem;
 }
 
 .topbar input {
@@ -198,8 +198,8 @@ align-items: stretch;
 
 .user {
   display: flex;
-  align-items: center;
-  /* Remove margin-left here */
+  align-items: right;
+  padding-left: 10px /* Changed left padding to push logout button to the side */
 }
 
 .user img {
